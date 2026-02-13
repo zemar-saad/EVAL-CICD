@@ -1,12 +1,13 @@
 name: Deploy Runner
 on:
   workflow_run:
-    wirkflows: ["deploy-pages"]
+    workflows: ["deploy-pages"]
     types:
       -completed
 
 jobs:
   test-runner:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on:
       - self-hosted
       - x64

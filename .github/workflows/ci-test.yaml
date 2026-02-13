@@ -1,11 +1,10 @@
-name: deploy pages
+name: deploy-pages
 on:
   workflow_run:
     wirkflows: [Test-HTML]
     types:
       -completed
-    branches:
-      - main
+
 
 permissions:
   contents: read

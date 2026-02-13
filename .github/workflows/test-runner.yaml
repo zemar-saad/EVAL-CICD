@@ -16,4 +16,4 @@ jobs:
           echo "Runner OK"
           hostname
           whoami
-          systeminfo | findstr /C:"système d’exploitation"
+          systeminfo | findstr /C:/WINDOWS/"

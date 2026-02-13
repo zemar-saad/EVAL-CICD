@@ -11,4 +11,4 @@ jobs:
       - name: Check HTML existence
         run: |
           ls -l index.html
-          echo "HTML file found. Running tests......"
+          echo "HTML file found. Running tests.."

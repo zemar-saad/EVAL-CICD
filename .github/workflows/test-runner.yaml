@@ -3,7 +3,7 @@ on:
   workflow_run:
     workflows: ["deploy-pages"]
     types:
-      -completed
+      - completed
 
 jobs:
   test-runner:

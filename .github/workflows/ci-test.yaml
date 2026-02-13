@@ -4,6 +4,8 @@ on:
     wirkflows: [Test-HTML]
     types:
       -completed
+    branches:
+      - main
 
 permissions:
   contents: read

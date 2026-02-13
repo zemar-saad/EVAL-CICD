@@ -1,4 +1,4 @@
-name: Deploy Runner
+name: Deploy Runner nginx
 on:
   workflow_run:
     workflows: ["deploy-pages"]
@@ -16,7 +16,7 @@ jobs:
       - name: Vérification du Runner
         run: |
           Write-Host "Le CI et GitHub Pages sont validés."
-          Write-Host "Machine actuelle : $env:desktop-rl0bbap"
+          Write-Host "Machine actuelle :desktop-rl0bbap"
       
       - name: Déploiement vers Nginx (Windows)
         run: |
@@ -31,4 +31,4 @@ jobs:
 
       - name: Vérification finale
         run: |
-          Get-Content "C:\Users\ASUS\Downloads\nginx-1.29.5\nginx-1.29.5\html" -TotalCount 5
+          Get-Content "C:\Users\ASUS\Downloads\nginx-1.29.5\nginx-1.29.5\html\index.html" -TotalCount 5

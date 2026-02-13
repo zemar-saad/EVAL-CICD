@@ -1,6 +1,9 @@
+name: deploy pages
 on:
-  push:
-    branches: ["main"]
+  workflow_run:
+    wirkflows: [Test-HTML]
+    types:
+      -completed
 
 permissions:
   contents: read
@@ -9,6 +12,7 @@ permissions:
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:

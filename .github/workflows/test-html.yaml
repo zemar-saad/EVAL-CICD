@@ -1,0 +1,14 @@
+name: Test-HTML
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  test-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check HTML existence
+        run: |
+          ls -l index.html
+          echo "HTML file found. Running tests..."

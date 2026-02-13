@@ -1,8 +1,10 @@
 name: Deploy Runner
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    wirkflows: ["deploy-pages"]
+    types:
+      -completed
+
 jobs:
   test-runner:
     runs-on:

@@ -6,17 +6,29 @@ on:
       - completed
 
 jobs:
-  test-runner:
+  deploy-windows:
+    # Condition de sécurité : on ne déploie que si l'étape précédente (Pages) est un succès
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    runs-on:
-      - self-hosted
-      - x64
+    runs-on: self-hosted
     steps:
-      - name: Verification
-        run: echo "Test de fonctionnement du Runner !"
-      - name: tests de commandes
+      - uses: actions/checkout@v4
+      
+      - name: Vérification du Runner
         run: |
-          echo "Runner OK"
-          hostname
-          whoami
-          systeminfo | findstr "OS"
+          Write-Host "Le CI et GitHub Pages sont validés."
+          Write-Host "Machine actuelle : $env:desktop-rl0bbap"
+      
+      - name: Déploiement vers Nginx (Windows)
+        run: |
+          $NginxPath = "C:\Users\ASUS\Downloads\nginx-1.29.5\nginx-1.29.5\html"
+          $SourceFile = "index.html"
+          Write-Host "Copie du fichier vers $NginxPath..."
+          
+          #  (-Force) pour ecraser l'ancien fichier
+          Copy-Item -Path $SourceFile -Destination "$NginxPath\index.html" -Force
+          
+          Write-Host "Succès ! Le site est mis à jour en local."
+
+      - name: Vérification finale
+        run: |
+          Get-Content "C:\Users\ASUS\Downloads\nginx-1.29.5\nginx-1.29.5\html" -TotalCount 5

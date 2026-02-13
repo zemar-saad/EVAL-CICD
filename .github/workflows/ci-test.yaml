@@ -1,7 +1,7 @@
 name: deploy-pages
 on:
   workflow_run:
-    wirkflows: [Test-HTML]
+    workflows: [Test-HTML]
     types:
       -completed
 
